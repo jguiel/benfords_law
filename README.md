@@ -1,6 +1,6 @@
 # Benford's Law Web App
 
-Built with Flask, designed toe extract data from a flat file and used to determine if dataset fits to Benford's law
+Built with Flask, designed to extract data from a flat file and used to determine if dataset fits to Benford's law
 
 ## Instructions:
 1. Clone the repo
