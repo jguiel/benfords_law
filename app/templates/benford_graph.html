@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<h1>{{ the_title }}</h1>
+
+<br>
+<ul>
+  <li><a href="{{ url_for('index') }}">Home Page</a></li>
+  <li><a href="{{ url_for('calculate') }}">Calculate another dataset</a></li>
+</ul>
+<br>
+<br>
+
+<h2>Your dataset vs. Benford&#39;s Law</h2>
+
+<div id='chart' class='chart'”></div>
+<script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+
+<script type='text/javascript'>
+
+  var graphs = {{graphJSON|safe}};
+  Plotly.plot('chart',graphs,{});
+  
+</script>
+<br><br>
+
+{% if benford_fit %}
+  {{p_value}}
+  <p>
+    Congratulations! Your data fit to Benford's Law.
+    <br>
+    (If your sample size is very small, please use this information with a grain of salt)
+  </p>
+{% else %}
+    {{p_value}}
+    <p>
+    Interesting! Your data do not fit to Benford's Law.
+    <br>
+    Uh-oh... someone's commiting fraud
+  </p>
+{% endif %}
+
+{% endblock %}

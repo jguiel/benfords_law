@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<h1>{{ the_title }}</h1>
+
+<br>
+<ul>
+  <li><a href="{{ url_for('index') }}">Home Page</a></li>
+  <li><a href="{{ url_for('calculate') }}">Calculate another dataset</a></li>
+</ul>
+<br>
+<br>
+
+<h2>Uh-oh!</h2>
+
+<p>
+{{ data }}
+</p>
+
+
+
+{% endblock %}

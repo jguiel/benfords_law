@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<h1>{{ the_title }}</h1>
+
+<ul>
+  <li><a href="{{ url_for('index') }}">Home Page</a></li>
+</ul>
+
+<br><br>
+
+<h2>Determine Goodness of Fit</h2>
+
+<p>
+    Upload your file below to calculate how well your data fit to this law. Ensure your data have no missing cells; the software is built to skip NaN and none cells, only utilizing integers/floats. Column names are irrelevant; you must include the column number (one-indexed) that contains the data you would like to have analyzed. For example, these data below in column 6 are to be analyzed. The user would input 6, attach the file, and hit submit. The example below was submitted with an error in column titles, so the first value of 8.40188 will be skipped.
+    <br>
+    <br>
+    <img alt="Instructions on what column" src="{{ url_for('static', filename='images/column_instructions.png') }}">
+    <br>
+    <br>
+    <b>
+        <em>
+            These calculations operate on the assumption that the leading digit of values < 0 is the first non-zero digit
+            <br>
+            eg. 0.000567 has leading digit 5
+        </em>
+    </b>
+    <br>
+    <br>
+    Accepted file types: <em>[&#39;txt&#39;, &#39;tsv&#39;, &#39;csv&#39;]</em>
+</p>
+
+<div class="center">
+    <form method="POST" action="/calculate.html" enctype="multipart/form-data">
+        <label for="data_column">Column containing data:</label><br>
+        <input type="text" id="data_column" name="data_column"><br>
+        <input type="file" name="file"><br>
+        <button>Submit</button>
+    </form>
+</div>
+
+<br><br><br>
+
+<center>
+<b>REMEMBER</b>: Always clean your data. I'm not your mother!
+<br>
+<em>(given more time and motivation, I could act as your mom—-but not today)</em>
+</center>
+
+{% endblock %}

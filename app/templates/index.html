@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<!-- py script -->
+<h1>{{ the_title }}</h1>
+
+<img alt="Benford's Graph ex." src="{{ url_for('static', filename='images/benford_graph.jpeg') }}">
+<center><p class="credit">Figure produced by Spaniard National Institue of Statistics <a href="https://phys.org/news/2007-05-law-digits-scientists.html" target="_blank">via phys.org</a></p></center>
+<br>
+
+<!-- definition of law -->
+<h2>What is Benford&#39;s Law?</h2>
+
+<p>Benford&#39;s law (also called the first digit law) states that the leading digits in a collection of data sets are probably going to be small. For example, most numbers in a set (about 30%) will have a leading digit of 1, when the expected probability is 11.1% (i.e. one out of nine digits). This is followed by about 17.5% starting with a number 2. This is an unexpected phenomenon; If all leading numbers (0 through 9) had equal probability, each would occur 11.1% of the time. To put it simply, Benford&#39;s law is a probability distribution for the likelihood of the first digit in a set of numbers (Frunza, 2015).</p>
+
+<p>(Source: <a href="https://www.statisticshowto.com/benfords-law/" target="_blank">statisticshowto.com/benfords-law</a>)</p>
+
+<!-- link to calculation page -->
+<br>
+<ul>
+  <li><a href="{{ url_for('calculate') }}">Does my data fit Benford's Law?</a></li>
+</ul>
+<br>
+<br>
+
+{% endblock %}
+ 
